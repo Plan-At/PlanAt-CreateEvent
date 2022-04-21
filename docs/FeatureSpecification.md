@@ -20,6 +20,7 @@
 |Author|Date|Version|Comment|
 |---|---|---|---|
 |Jack Scott|4/19/2022|Initial Draft|Created this page and outlined descriptions|
+|Jack Scott|4/21/2022|Update Draft|Finished the descriptions of the features currently in place|
 
 ## Functional Specification
 The Create Event feature for the calendar, allowing for information about an event to be entered and then created.
