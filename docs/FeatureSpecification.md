@@ -4,7 +4,7 @@
 |||
 |---|---|
 |Feature Name|Plan-At|
-|Area|Calendar|
+|Area|Calendar Functions|
 |Related Features|Bootstrap|
 |Requirement Specs|
 |Spec Status|Draft|
