@@ -51,7 +51,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="createEvent" data-bs-backdrop="static" tabindex="-1" aria-labelledby="createEventLabel" aria-hidden="true">
+  <div class="modal fade needs-validation" id="createEvent" data-bs-backdrop="static" tabindex="-1" aria-labelledby="createEventLabel" aria-hidden="true" novalidate>
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -62,7 +62,7 @@
           <form>
             <div class="mb-3">
               <label for="event-name" class="col-form-label">Title:</label>
-              <input type="text" class="form-control" id="event-name">
+              <input type="text" class="form-control" id="event-name" required>
             </div>
             <div class="row mb-3">
               <label for="event-days-start" class="col-sm-3 col-form-label">Start Date:</label>
@@ -109,7 +109,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
           <button class="btn btn-primary" data-bs-target="#makeReoccuring" data-bs-toggle="modal">Make Reoccuring</button>
-          <button type="button" class="btn btn-primary" onclick="submitButton()">Submit</button>
+          <button type="submit" class="btn btn-primary" onclick="submitButton()">Submit</button>
         </div>
       </div>
     </div>
@@ -328,49 +328,32 @@
  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
+
+
 <script>
   var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
   var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
      return new bootstrap.Popover(popoverTriggerEl)
   })
 </script>
+
 <script>
   //https://api-0.752628.xyz/docs for testing
 
   function submitButton() {
-    eventName = document.getElementById("event-name").value
-    eventDaysStart = document.getElementById("event-days-start").value
-    eventTimeStart = document.getElementById("event-time-start").value
-    eventTimeStartSelect = document.getElementById("event-time-start-select").value
-    eventDaysEnd = document.getElementById("event-days-end").value
-    eventTimeEnd = document.getElementById("event-time-end").value
-    eventTimeEndSelect = document.getElementById("event-time-end-select").value
-    eventDesc = document.getElementById("event-desc").value
+    const eventName = document.getElementById("event-name").value;
+    const eventDaysStart = document.getElementById("event-days-start").value;
+    const eventTimeStart = document.getElementById("event-time-start").value;
+    const eventTimeStartSelect = document.getElementById("event-time-start-select").value;
+    const eventDaysEnd = document.getElementById("event-days-end").value;
+    const eventTimeEnd = document.getElementById("event-time-end").value;
+    const eventTimeEndSelect = document.getElementById("event-time-end-select").value;
+    const eventDesc = document.getElementById("event-desc").value;
 
-    hoursStart = parseInt(eventTimeStart.substring(0, 2))
-    hoursEnd = parseInt(eventTimeEnd.substring(0, 2))
-    if (eventTimeStartSelect == "PM") {
-      hoursStart += 12
-      hoursStart = hoursStart.toString()
-    }
-    else {
-      hoursStart = "0" + hoursStart.toString()
-    }
-    if (eventTimeEndSelect == "PM") {
-      hoursEnd += 12
-      hoursEnd = hoursEnd.toString()
-    }
-    else {
-      hoursEnd = "0" + hoursEnd.toString()
-    }
-    
-    console.log(eventDaysStart + "T" + hoursStart.toString() + eventTimeStart.substring(2) + ":00")
+    timestampStart = getTimestamp(eventDaysStart, eventTimeStart, eventTimeStartSelect);
+    timestampEnd = getTimestamp(eventDaysEnd, eventTimeEnd, eventTimeEndSelect);
 
-    timestampStart = new Date(eventDaysStart + "T" + hoursStart + eventTimeStart.substring(2) + ":00").getTime()/1000
-    timestampEnd = new Date(eventDaysEnd + "T" + hoursEnd + eventTimeEnd.substring(2) + ":00").getTime()/1000
-    
   
-
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "https://api-0.752628.xyz/v1/add/user/calendar/event?person_id=1234567890");
 
@@ -419,5 +402,20 @@
       ]
     }))
   }
+</script>
+
+<script>
+  function getTimestamp(eventDays, eventTime, eventTimeSelect) {
+    var hours = parseInt(eventTime.substring(0, 2));
+    if (eventTimeSelect == "PM") {
+      hours += 12;
+      hours = hours.toString();
+    }
+    else {
+      hours = "0" + hours.toString();
+    }
+
+    return new Date(eventDays + "T" + hours + ":" + eventTime.substring(2) + ":00").getTime()/1000;
+}
 </script>
 </html>
