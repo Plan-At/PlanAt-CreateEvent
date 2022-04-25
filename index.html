@@ -151,7 +151,7 @@
           </form>
 
           <!-- Daily -->
-          <form>
+          <form id="dailyMain">
             <div class="row auto" id="daily">
               <div>
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="dayOption1" checked>
@@ -175,7 +175,7 @@
           </form>
 
           <!-- Weekly -->
-          <form id="weekly" hidden>
+          <form id="weeklyMain" hidden>
             <div class="row mb-2">
               <label for="weekly" class="col-auto col-form-label">Recurs every</label>
               <div class="col-sm-2">
@@ -203,7 +203,7 @@
           </form>
 
           <!-- Monthly -->
-          <form id="monthly" hidden>
+          <form id="monthlyMain" hidden>
             <div class="row mb-2">
               <label for="monthly" class="col-auto col-form-label">Recurs every</label>
               <div class="col-sm-2">
@@ -245,7 +245,7 @@
           </form>
 
           <!-- Yearly -->
-          <form id="yearly" hidden>
+          <form id="yearlyMain" hidden>
             <div class="row mb-2">
               <label for="yearAmount" class="col-auto col-form-label">Recurs every</label>
               <div class="col-sm-2">
@@ -341,7 +341,7 @@
 <script>
   function showOption(option) {
     console.log("test")
-    var x = document.getElementById("yearly")
+    var x = document.getElementById("dailyMain")
     if (x.style.display === "none") {
       x.style.display = "block";
     } else {
