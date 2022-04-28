@@ -125,197 +125,197 @@
         <div class="modal-body row mb-3 gy-5">
           <form>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="dailyOption" checked onclick="showOption(dailyOption)">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="dailyOption" checked onclick="showOption(dailyMain)">
               <label class="form-check-label" for="flexRadioDefault1">
                 Daily
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="weeklyOption" onclick="showOption(weeklyOption)">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="weeklyOption" onclick="showOption(weeklyMain)">
               <label class="form-check-label" for="flexRadioDefault1">
                 Weekly
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="monthlyOption" onclick="showOption(monthlyOption)">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="monthlyOption" onclick="showOption(monthlyMain)">
               <label class="form-check-label" for="flexRadioDefault1">
                 Monthly
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="yearlyOption" onclick="showOption(yearlyOption)">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="yearlyOption" onclick="showOption(yearlyMain)">
               <label class="form-check-label" for="flexRadioDefault1">
                 Yearly
               </label>
             </div>
           </form>
 
-          <!-- Daily -->
-          <form id="dailyMain">
-            <div class="row auto" id="daily">
-              <div>
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="dayOption1" checked>
-                <label for="daily1" class="form-check-label">Recurs every</label>
-                <input type="text" class="col-sm-1 form-check-label" id="daily1" value="1">
-                <label for="daily1" class="form-check-label">day(s)</label>
+            <!-- Daily -->
+            <form id="dailyMain">
+              <div class="row auto" id="daily">
+                <div>
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="dayOption1" checked>
+                  <label for="daily1" class="form-check-label">Recurs every</label>
+                  <input type="text" class="col-sm-1 form-check-label" id="daily1" value="1">
+                  <label for="daily1" class="form-check-label">day(s)</label>
+                </div>
               </div>
-            </div>
-            <div class="row mb-2">
-              <div>
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="dayOption2">
-                <label for="daily2" class="form-check-label">Recurs every weekday</label>
+              <div class="row mb-2">
+                <div>
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="dayOption2">
+                  <label for="daily2" class="form-check-label">Recurs every weekday</label>
+                </div>
               </div>
-            </div>
-            <div class="row mb-2">
-              <div>
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="dayOption3">
-                <label for="daily3" class="form-check-label">Recurs every weekend</label>
+              <div class="row mb-2">
+                <div>
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="dayOption3">
+                  <label for="daily3" class="form-check-label">Recurs every weekend</label>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
 
-          <!-- Weekly -->
-          <form id="weeklyMain" hidden>
-            <div class="row mb-2">
-              <label for="weekly" class="col-auto col-form-label">Recurs every</label>
-              <div class="col-sm-2">
-                <input type="text" class="form-control" id="weekly" value="1">
+            <!-- Weekly -->
+            <form id="weeklyMain" style="display: none">
+              <div class="row mb-2">
+                <label for="weekly" class="col-auto col-form-label">Recurs every</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control" id="weekly" value="1">
+                </div>
+                <div class="col-auto">
+                  <label for="weekly" class="col-auto col-form-label">week(s)</label>
+                </div>
               </div>
-              <div class="col-auto">
-                <label for="weekly" class="col-auto col-form-label">week(s)</label>
+              <div class="row mb-2">
+                <label for="week-day" class="col-auto col-form-label">On</label>
+                <div class="col-sm-4">
+                  <select class="form-select" aria-label="week-day" multiple>
+                    <option selected>Sunday</option>
+                    <option value="1">Monday</option>
+                    <option value="2">Tuesday</option>
+                    <option value="3">Wednesday</option>
+                    <option value="4">Thursday</option>
+                    <option value="5">Friday</option>
+                    <option value="6">Saturday</option>
+                  </select>
+                </div>
+                <label for="week-day" class="col-auto col-form-label">(able to select multiple)</label>
               </div>
-            </div>
-            <div class="row mb-2">
-              <label for="week-day" class="col-auto col-form-label">On</label>
-              <div class="col-sm-4">
-                <select class="form-select" aria-label="week-day" multiple>
-                  <option selected>Sunday</option>
-                  <option value="1">Monday</option>
-                  <option value="2">Tuesday</option>
-                  <option value="3">Wednesday</option>
-                  <option value="4">Thursday</option>
-                  <option value="5">Friday</option>
-                  <option value="6">Saturday</option>
-                </select>
-              </div>
-              <label for="week-day" class="col-auto col-form-label">(able to select multiple)</label>
-            </div>
-          </form>
+            </form>
 
-          <!-- Monthly -->
-          <form id="monthlyMain" hidden>
-            <div class="row mb-2">
-              <label for="monthly" class="col-auto col-form-label">Recurs every</label>
-              <div class="col-sm-2">
-                <input type="text" class="form-control" id="monthly" value="1">
+            <!-- Monthly -->
+            <form id="monthlyMain" style="display: none">
+              <div class="row mb-2">
+                <label for="monthly" class="col-auto col-form-label">Recurs every</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control" id="monthly" value="1">
+                </div>
+                <div class="col-sm-2">
+                  <label for="monthly" class="col-auto col-form-label">month(s)</label>
+                </div>
               </div>
-              <div class="col-sm-2">
-                <label for="monthly" class="col-auto col-form-label">month(s)</label>
+              <div class="row mb-2">
+                <div>
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="monthOption1" checked>
+                  <label for="monthly" class="form-check-label">On day</label>
+                  <input type="text" class="col-sm-1 form-check-label" id="monthly" value="1">
+                </div>
               </div>
-            </div>
-            <div class="row mb-2">
-              <div>
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="monthOption1" checked>
-                <label for="monthly" class="form-check-label">On day</label>
-                <input type="text" class="col-sm-1 form-check-label" id="monthly" value="1">
+              <div class="row mb-2">
+                <div>
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="monthOption2">
+                  <label for="month-day" class="form-check-label">On every</label>
+                  <select class="form-check-label" aria-label="monthly">
+                    <option selected>1st</option>
+                    <option value="1">2nd</option>
+                    <option value="2">3rd</option>
+                    <option value="3">4th</option>
+                    <option value="4">Last</option>
+                  </select>
+                  <select class="form-check-label" aria-label="month-day">
+                    <option selected>Sunday</option>
+                    <option value="1">Monday</option>
+                    <option value="2">Tuesday</option>
+                    <option value="3">Wednesday</option>
+                    <option value="4">Thursday</option>
+                    <option value="5">Friday</option>
+                    <option value="6">Saturday</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <div class="row mb-2">
-              <div>
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="monthOption2">
-                <label for="month-day" class="form-check-label">On every</label>
-                <select class="form-check-label" aria-label="monthly">
-                  <option selected>1st</option>
-                  <option value="1">2nd</option>
-                  <option value="2">3rd</option>
-                  <option value="3">4th</option>
-                  <option value="4">Last</option>
-                </select>
-                <select class="form-check-label" aria-label="month-day">
-                  <option selected>Sunday</option>
-                  <option value="1">Monday</option>
-                  <option value="2">Tuesday</option>
-                  <option value="3">Wednesday</option>
-                  <option value="4">Thursday</option>
-                  <option value="5">Friday</option>
-                  <option value="6">Saturday</option>
-                </select>
-              </div>
-            </div>
-          </form>
+            </form>
 
-          <!-- Yearly -->
-          <form id="yearlyMain" hidden>
-            <div class="row mb-2">
-              <label for="yearAmount" class="col-auto col-form-label">Recurs every</label>
-              <div class="col-sm-2">
-                <input type="text" class="form-control" id="yearAmount" value="1">
+            <!-- Yearly -->
+            <form id="yearlyMain" style="display: none">
+              <div class="row mb-2">
+                <label for="yearAmount" class="col-auto col-form-label">Recurs every</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control" id="yearAmount" value="1">
+                </div>
+                <div class="col-sm-2">
+                  <label for="yearAmount" class="col-auto col-form-label">year(s)</label>
+                </div>
               </div>
-              <div class="col-sm-2">
-                <label for="yearAmount" class="col-auto col-form-label">year(s)</label>
+              <div class="row mb-2">
+                <div>
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="yearOption1" checked>
+                  <label for="yearMonth1" class="form-check-label">On</label>
+                  <select class="form-check-label" aria-label="yearMonth1">
+                    <option selected>January</option>
+                    <option value="1">February</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <option value="8">September</option>
+                    <option value="9">October</option>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                  </select>
+                  <input type="text" class="col-sm-1 form-check-label" id="yearDay" value="1">
+                </div>
               </div>
-            </div>
-            <div class="row mb-2">
-              <div>
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="yearOption1" checked>
-                <label for="yearMonth1" class="form-check-label">On</label>
-                <select class="form-check-label" aria-label="yearMonth1">
-                  <option selected>January</option>
-                  <option value="1">February</option>
-                  <option value="2">March</option>
-                  <option value="3">April</option>
-                  <option value="4">May</option>
-                  <option value="5">June</option>
-                  <option value="6">July</option>
-                  <option value="7">August</option>
-                  <option value="8">September</option>
-                  <option value="9">October</option>
-                  <option value="10">November</option>
-                  <option value="11">December</option>
-                </select>
-                <input type="text" class="col-sm-1 form-check-label" id="yearDay" value="1">
+              <div class="row mb-2">
+                <div>
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="yearOption2">
+                  <label for="yearSelect" class="form-check-label">On every</label>
+                  <select class="form-check-label" aria-label="yearSelect">
+                    <option selected>1st</option>
+                    <option value="1">2nd</option>
+                    <option value="2">3rd</option>
+                    <option value="3">4th</option>
+                    <option value="4">Last</option>
+                  </select>
+                  <select class="form-check-label" aria-label="yearDayOfWeek">
+                    <option selected>Sunday</option>
+                    <option value="1">Monday</option>
+                    <option value="2">Tuesday</option>
+                    <option value="3">Wednesday</option>
+                    <option value="4">Thursday</option>
+                    <option value="5">Friday</option>
+                    <option value="6">Saturday</option>
+                  </select>
+                  <label for="yearMonth2" class="form-check-label">of</label>
+                  <select class="form-check-label" aria-label="yearMonth2">
+                    <option selected>January</option>
+                    <option value="1">February</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <option value="8">September</option>
+                    <option value="9">October</option>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <div class="row mb-2">
-              <div>
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="yearOption2">
-                <label for="yearSelect" class="form-check-label">On every</label>
-                <select class="form-check-label" aria-label="yearSelect">
-                  <option selected>1st</option>
-                  <option value="1">2nd</option>
-                  <option value="2">3rd</option>
-                  <option value="3">4th</option>
-                  <option value="4">Last</option>
-                </select>
-                <select class="form-check-label" aria-label="yearDayOfWeek">
-                  <option selected>Sunday</option>
-                  <option value="1">Monday</option>
-                  <option value="2">Tuesday</option>
-                  <option value="3">Wednesday</option>
-                  <option value="4">Thursday</option>
-                  <option value="5">Friday</option>
-                  <option value="6">Saturday</option>
-                </select>
-                <label for="yearMonth2" class="form-check-label">of</label>
-                <select class="form-check-label" aria-label="yearMonth2">
-                  <option selected>January</option>
-                  <option value="1">February</option>
-                  <option value="2">March</option>
-                  <option value="3">April</option>
-                  <option value="4">May</option>
-                  <option value="5">June</option>
-                  <option value="6">July</option>
-                  <option value="7">August</option>
-                  <option value="8">September</option>
-                  <option value="9">October</option>
-                  <option value="10">November</option>
-                  <option value="11">December</option>
-                </select>
-              </div>
-            </div>
-          </form>
-        </div>
-
+            </form>
+          </div>
+        
         <div class="modal-footer">
           <button class="btn btn-secondary" data-bs-target="#createEvent" data-bs-toggle="modal">Cancel</button>
           <button type="button" class="btn btn-primary">Save</button>
@@ -339,14 +339,13 @@
 </script>
 
 <script>
-  function showOption(option) {
-    console.log("test")
-    var x = document.getElementById("dailyMain")
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
+  function showOption(name) {
+    var x = name
+    dailyMain.style.display = "none";
+    weeklyMain.style.display = "none";
+    monthlyMain.style.display = "none";
+    yearlyMain.style.display = "none";
+    x.style.display = "block"
   }
 </script>
 
