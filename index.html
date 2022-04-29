@@ -151,7 +151,7 @@
           </form>
 
             <!-- Daily -->
-            <form id="dailyMain">
+            <form id="dailyMain" style="display: block">
               <div class="row auto" id="daily">
                 <div>
                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="dailyOption1" checked>
@@ -342,7 +342,7 @@
     weeklyMain.style.display = "none";
     monthlyMain.style.display = "none";
     yearlyMain.style.display = "none";
-    name.style.display = "block"
+    name.style.display = "block";
   }
 </script>
 
@@ -387,14 +387,25 @@
   //yearlyOption2Month
 
   function saveReoccuring() {
-    var daily = document.getElementById("dailyOption").value;
-    var weekly = document.getElementById("weeklyOption").value;
-    var monthly = document.getElementById("monthlyOption").value;
-    var yearly = document.getElementById("yearlyOption").value;
-    console.log(daily)
+    if (document.getElementById("dailyOption").checked === true) {
+      if (document.getElementById("dailyOption1").checked === true) {
+        
+      }
+      else if (document.getElementById("dailyOption2").checked === true) {
 
-    if (daily == "on") {
-      console.log("test2")
+      }
+      else {
+        
+      }
+    }
+    else if (document.getElementById("weeklyOption").checked === true) {
+      
+    }
+    else if (document.getElementById("monthlyOption").checked === true) {
+      
+    }
+    else {
+
     }
 
   }
@@ -421,7 +432,7 @@
 
     xhr.setRequestHeader("Accept", "application/json");
     xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.setRequestHeader("token", "aaaaaaaa");
+    xhr.setRequestHeader("pa-token", "aaaaaaaa");
 
     xhr.onload = () => console.log(xhr.responseText);
     xhr.send(JSON.stringify({
