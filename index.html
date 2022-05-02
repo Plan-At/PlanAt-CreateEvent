@@ -355,59 +355,95 @@
 
 
   //dailyOption1
-  //dailyOption1Num
+  //dailyOption1Num *
   
-  //dailyOption2
-  //dailyOption3
+  //dailyOption2 *
+
+  //dailyOption3 *
 
 
-  //weeklyNum
-  //weeklyDays
+  //weeklyNum *
+  //weeklyDays *
 
 
-  //monthlyNum
+  //monthlyNum *
 
   //monthlyOption1
-  //monthlyOption1Num
+  //monthlyOption1Num *
 
   //monthlyOption2
-  //monthlyOption2Num
-  //monthlyOption2Day
+  //monthlyOption2Num *
+  //monthlyOption2Day *
   
 
-  //yearlyNum
+  //yearlyNum*
 
   //yearlyOption1
-  //yearlyOption1Month
-  //yearlyOption1Day
+  //yearlyOption1Month *
+  //yearlyOption1Day *
 
   //yearlyOption2
-  //yearlyOption2Num
-  //yearlyOption2Day
-  //yearlyOption2Month
+  //yearlyOption2Num *
+  //yearlyOption2Day *
+  //yearlyOption2Month *
 
   function saveReoccuring() {
+    var dailyNum;
+    var dailyWeekdays;
+    var dailyWeekends;
+    var weeklyNum;
+    var weeklyDays;
+    var montlyNum;
+    var montlyMonthDay; 
+    var monthlyNum2;
+    var monthlyWeekDay;
+    var yearlyNum; 
+    var yearlyMonth;
+    var yearlyMonthDay;
+    var yearlyNum2;
+    var yearlyWeekDay;
+    var yearlyMonth2;
+
     if (document.getElementById("dailyOption").checked === true) {
       if (document.getElementById("dailyOption1").checked === true) {
-        
+        dailyNum = document.getElementById("dailyOption1Num");
       }
       else if (document.getElementById("dailyOption2").checked === true) {
-
+        dailyWeekdays = document.getElementById("dailyOption2")
       }
       else {
-        
+        dailyWeekends = document.getElementById("dailyOption3")
       }
     }
+
     else if (document.getElementById("weeklyOption").checked === true) {
-      
+      weeklyNum = document.getElementById("weeklyNum")
+      weeklyDays = document.getElementById("weeklyDays")
     }
+
     else if (document.getElementById("monthlyOption").checked === true) {
-      
+      monthlyNum = document.getElementById("monthlyNum")
+      if (document.getElementById("monthlyOption1").checked === true) {
+        monthlyMonthDay = document.getElementById("monthlyOption1Num")
+      }
+      else {
+        monthlyNum2 = document.getElementById("monthlyOption2Num")
+        monthlyWeekDay = document.getElementById("monthlyOption2Day")
+      }
     }
+
     else {
-
+      yearlyNum = document.getElementById("yearlyNum")
+      if (document.getElementById("yearlyOption1").checked === true) {
+        yearlyMonth = document.getElementById("yearlyOption1Month")
+        yearlyMonthDay = document.getElementById("yearlyOption1Day")
+      }
+      else {
+        yearlyNum2 = document.getElementById("yearlyOption2Num")
+        yearlyWeekDay = document.getElementById("yearlyOption2Day")
+        yearlyMonth2 = document.getElementById("yearlyOption2Month")
+      }
     }
-
   }
 </script>
 
