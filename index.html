@@ -108,8 +108,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button class="btn btn-primary" data-bs-target="#makeReoccuring" data-bs-toggle="modal">Make Reoccuring</button>
-          <button type="submit" class="btn btn-primary" onclick="submitButton()">Submit</button>
+          <button class="btn btn-primary" data-bs-target="#makeReoccuring" data-bs-toggle="modal" id="reoccuringButton">Make Reoccuring</button>
+          <button type="submit" class="btn btn-success" onclick="submitButton()">Submit</button>
         </div>
       </div>
     </div>
@@ -318,7 +318,8 @@
         
         <div class="modal-footer">
           <button class="btn btn-secondary" data-bs-target="#createEvent" data-bs-toggle="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" onclick="saveReoccuring()">Save</button>
+          <button type="button" class="btn btn-danger" onclick="removeReoccuring()" data-bs-target="#createEvent" data-bs-toggle="modal">Remove</button>
+          <button type="button" class="btn btn-success" onclick="saveReoccuring()" data-bs-target="#createEvent" data-bs-toggle="modal">Submit</button>
         </div>
       </div>
     </div>
@@ -444,6 +445,17 @@
         yearlyMonth2 = document.getElementById("yearlyOption2Month")
       }
     }
+    var reoccur = document.getElementById("reoccuringButton");
+    reoccur.innerText = "Edit Reoccuring";
+    reoccur.className = "btn btn-success";
+  }
+</script>
+
+<script>
+  function removeReoccuring() {
+    var reoccur = document.getElementById("reoccuringButton");
+    reoccur.innerText = "Make Reoccuring";
+    reoccur.className = "btn btn-primary";
   }
 </script>
 
