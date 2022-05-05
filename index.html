@@ -16,6 +16,33 @@
     Share Event
   </button>
 
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteEvent">
+    Delete Event
+  </button>
+
+  <div class="modal fade" id="deleteEvent" data-bs-backdrop="static" tabindex="-1" aria-labelledby="shareEventLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="shareEventLabel">Delete Event</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="user-name" class="col-form-label">Enter event id to delete:</label>
+              <input type="text" class="form-control" id="eventId">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" onclick="deleteEvent()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal fade" id="shareEvent" data-bs-backdrop="static" tabindex="-1" aria-labelledby="shareEventLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -108,8 +135,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button class="btn btn-primary" data-bs-target="#makeReoccuring" data-bs-toggle="modal">Make Reoccuring</button>
-          <button type="submit" class="btn btn-primary" onclick="submitButton()">Submit</button>
+          <button class="btn btn-primary" data-bs-target="#makeReoccuring" data-bs-toggle="modal" id="reoccuringButton">Make Reoccuring</button>
+          <button type="submit" class="btn btn-success" onclick="submitButton()">Submit</button>
         </div>
       </div>
     </div>
@@ -318,7 +345,8 @@
         
         <div class="modal-footer">
           <button class="btn btn-secondary" data-bs-target="#createEvent" data-bs-toggle="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" onclick="saveReoccuring()">Save</button>
+          <button type="button" class="btn btn-danger" onclick="removeReoccuring()" data-bs-target="#createEvent" data-bs-toggle="modal">Remove</button>
+          <button type="button" class="btn btn-success" onclick="saveReoccuring()" data-bs-target="#createEvent" data-bs-toggle="modal">Submit</button>
         </div>
       </div>
     </div>
@@ -347,6 +375,21 @@
 </script>
 
 <script>
+  var dailyNum;
+  var dailyWeekdays;
+  var dailyWeekends;
+  var weeklyNum;
+  var weeklyDays;
+  var montlyNum;
+  var montlyMonthDay; 
+  var monthlyNum2;
+  var monthlyWeekDay;
+  var yearlyNum; 
+  var yearlyMonth;
+  var yearlyMonthDay;
+  var yearlyNum2;
+  var yearlyWeekDay;
+  var yearlyMonth2;
   
   //dailyOption
   //weeklyOption
@@ -355,59 +398,103 @@
 
 
   //dailyOption1
-  //dailyOption1Num
+  //dailyOption1Num *
   
-  //dailyOption2
-  //dailyOption3
+  //dailyOption2 *
+
+  //dailyOption3 *
 
 
-  //weeklyNum
-  //weeklyDays
+  //weeklyNum *
+  //weeklyDays *
 
 
-  //monthlyNum
+  //monthlyNum *
 
   //monthlyOption1
-  //monthlyOption1Num
+  //monthlyOption1Num *
 
   //monthlyOption2
-  //monthlyOption2Num
-  //monthlyOption2Day
+  //monthlyOption2Num *
+  //monthlyOption2Day *
   
 
-  //yearlyNum
+  //yearlyNum*
 
   //yearlyOption1
-  //yearlyOption1Month
-  //yearlyOption1Day
+  //yearlyOption1Month *
+  //yearlyOption1Day *
 
   //yearlyOption2
-  //yearlyOption2Num
-  //yearlyOption2Day
-  //yearlyOption2Month
+  //yearlyOption2Num *
+  //yearlyOption2Day *
+  //yearlyOption2Month *
 
   function saveReoccuring() {
     if (document.getElementById("dailyOption").checked === true) {
       if (document.getElementById("dailyOption1").checked === true) {
-        
+        dailyNum = document.getElementById("dailyOption1Num");
       }
       else if (document.getElementById("dailyOption2").checked === true) {
-
+        dailyWeekdays = document.getElementById("dailyOption2")
       }
       else {
-        
+        dailyWeekends = document.getElementById("dailyOption3")
       }
     }
+
     else if (document.getElementById("weeklyOption").checked === true) {
-      
+      weeklyNum = document.getElementById("weeklyNum")
+      weeklyDays = document.getElementById("weeklyDays")
     }
+
     else if (document.getElementById("monthlyOption").checked === true) {
-      
+      monthlyNum = document.getElementById("monthlyNum")
+      if (document.getElementById("monthlyOption1").checked === true) {
+        monthlyMonthDay = document.getElementById("monthlyOption1Num")
+      }
+      else {
+        monthlyNum2 = document.getElementById("monthlyOption2Num")
+        monthlyWeekDay = document.getElementById("monthlyOption2Day")
+      }
     }
+
     else {
-
+      yearlyNum = document.getElementById("yearlyNum")
+      if (document.getElementById("yearlyOption1").checked === true) {
+        yearlyMonth = document.getElementById("yearlyOption1Month")
+        yearlyMonthDay = document.getElementById("yearlyOption1Day")
+      }
+      else {
+        yearlyNum2 = document.getElementById("yearlyOption2Num")
+        yearlyWeekDay = document.getElementById("yearlyOption2Day")
+        yearlyMonth2 = document.getElementById("yearlyOption2Month")
+      }
     }
+    var reoccur = document.getElementById("reoccuringButton");
+    reoccur.innerText = "Edit Reoccuring";
+    reoccur.className = "btn btn-success";
+  }
 
+  function removeReoccuring() {
+    dailyNum = null;
+    dailyWeekdays = null;
+    dailyWeekends = null;
+    weeklyNum = null;
+    weeklyDays = null;
+    montlyNum = null;
+    montlyMonthDay = null;
+    monthlyNum2 = null;
+    monthlyWeekDay = null;
+    yearlyNum = null;
+    yearlyMonth = null;
+    yearlyMonthDay = null;
+    yearlyNum2 = null;
+    yearlyWeekDay = null;
+    yearlyMonth2 = null;
+    var reoccur = document.getElementById("reoccuringButton");
+    reoccur.innerText = "Make Reoccuring";
+    reoccur.className = "btn btn-primary";
   }
 </script>
 
@@ -428,7 +515,7 @@
     timestampEnd = getTimestamp(eventDaysEnd, eventTimeEnd, eventTimeEndSelect);
   
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://api-0.752628.xyz/v1/add/user/calendar/event?person_id=1234567890");
+    xhr.open("POST", "https://api.752628.xyz/v1/add/user/calendar/event?person_id=1234567890");
 
     xhr.setRequestHeader("Accept", "application/json");
     xhr.setRequestHeader("Content-Type", "application/json");
@@ -474,6 +561,21 @@
         }
       ]
     }))
+  }
+</script>
+
+<script>
+  function deleteEvent() {
+    console.log(parseInt(document.getElementById("eventId").value))
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://api.752628.xyz/v1/delete/user/calendar/event?event_id=" + parseInt(document.getElementById("eventId").value));
+
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("pa-token", "aaaaaaaa");
+
+    xhr.onload = () => console.log(xhr.responseText);
+    xhr.send();
   }
 </script>
 
