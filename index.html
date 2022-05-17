@@ -388,9 +388,20 @@
 
 <script>
   function testing() {
-    console.log("testttt")
-    test3 = document.getElementById("test3");
-    
+    // /v1/private/user/calendar/event/index
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://api.752628.xyz/v1/private/user/calendar/event/index?person_id=1234567890");
+
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("pa-token", "aaaaaaaa");
+
+    xhr.onload = () => console.log(xhr.responseText);
+    xhr.send();
+
+
+    const node = document.createElement("card");
+    node.innerHTML = `
     <div class="card" id="test2">
       <div class="card-body">
         <h5 class="card-title">Special title treatment</h5>
@@ -398,9 +409,10 @@
         <button type="button" class="btn btn-danger">Delete</button>
       </div>
     </div>
-  
-    console.log(document.getElementById("test2").value);
-    test3.appendChild(document.getElementById("test2"));
+    `;
+    document.getElementById("test3").appendChild(node);
+    document.getElementById("test3").get
+
   }
 </script>
 
