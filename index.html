@@ -399,6 +399,9 @@
     xhr.onload = () => console.log(xhr.responseText);
     xhr.send();
 
+    var responseT = xhr.responseText;
+    console.log(xhr.responseText.substring(xhr.responseText.indexOf("[")+1, xhr.responseText.indexOf("]")));
+
 
     const node = document.createElement("card");
     node.innerHTML = `
@@ -411,8 +414,6 @@
     </div>
     `;
     document.getElementById("test3").appendChild(node);
-    document.getElementById("test3").get
-
   }
 </script>
 
