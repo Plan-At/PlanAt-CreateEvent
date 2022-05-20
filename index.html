@@ -396,24 +396,29 @@
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("pa-token", "aaaaaaaa");
 
-    xhr.onload = () => console.log(xhr.responseText);
+    xhr.onload = () => displayEventList(xhr.responseText.substring(xhr.responseText.indexOf("[")+1, xhr.responseText.indexOf("]")));
     xhr.send();
+  }
 
-    var responseT = xhr.responseText;
-    console.log(xhr.responseText.substring(xhr.responseText.indexOf("[")+1, xhr.responseText.indexOf("]")));
-
-
-    const node = document.createElement("card");
-    node.innerHTML = `
-    <div class="card" id="test2">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <button type="button" class="btn btn-danger">Delete</button>
+  function displayEventList(eventList) {
+    const newEventList = eventList.split(",");
+    for (var i = 0; i < newEventList.length; i++) {
+      var node = document.createElement("card");
+      node.id = newEventList[i];
+      node.innerHTML = `
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <button type="button" class="btn btn-danger" id="deleteEventButton" onclick="deleteEvent(node.id)">Delete</button>
+        </div>
       </div>
-    </div>
-    `;
-    document.getElementById("test3").appendChild(node);
+      `;
+      
+      document.getElementById("test3").appendChild(node);
+      console.log(newEventList[i]);
+
+    }
   }
 </script>
 
@@ -618,10 +623,10 @@
 </script>
 
 <script>
-  function deleteEvent() {
-    console.log(parseInt(document.getElementById("eventId").value))
+  function deleteEvent(eventNumId) {
+    console.log(eventNumId);
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://api.752628.xyz/v1/delete/user/calendar/event?event_id=" + parseInt(document.getElementById("eventId").value));
+    xhr.open("POST", "https://api.752628.xyz/v1/delete/user/calendar/event?event_id=" + parseInt(1));
 
     xhr.setRequestHeader("Accept", "application/json");
     xhr.setRequestHeader("Content-Type", "application/json");
