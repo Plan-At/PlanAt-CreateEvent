@@ -400,6 +400,8 @@
   }
 
   function displayEventList(eventList) {
+    var manageEvents = document.getElementById("test3");
+    manageEvents.innerHTML = null;
     const newEventList = eventList.event_id_list;
     for (var i = 0; i < newEventList.length; i++) {
       var node = document.createElement("card");
@@ -409,24 +411,24 @@
         <div class="card-body">
           <h5 class="card-title">Special title treatment</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <button type="button" class="btn btn-danger" id="deleteEventButton">Delete</button>
+          <button type="button" class="btn btn-danger" id="deleteButton" onclick="deleteEvent(this.id)">Delete</button>
         </div>
       </div>
       `;
-      document.getElementById("deleteEventButton").onclick = deleteEvent(node.id);
 
-      document.getElementById("test3").appendChild(node);
+      manageEvents.appendChild(node);
+      document.getElementById("deleteButton").id = node.id;
+
       console.log(newEventList[i]);
-
     }
   }
 </script>
 
 <script>
   function deleteEvent(eventNumId) {
-    console.log(eventNumId);
+    console.log(eventNumId)
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://api.752628.xyz/v2/calendar/event/delete?event_id=" + parseInt(1));
+    xhr.open("POST", "https://api.752628.xyz/v2/calendar/event/delete?event_id=" + parseInt(eventNumId));
 
     xhr.setRequestHeader("Accept", "application/json");
     xhr.setRequestHeader("Content-Type", "application/json");
