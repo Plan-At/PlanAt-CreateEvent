@@ -387,6 +387,7 @@
 </script>
 
 <script>
+  var manageEvents = document.getElementById("test3");
   function testing() {
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "https://api.752628.xyz/v2/calendar/event/index");
@@ -395,32 +396,46 @@
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.setRequestHeader("pa-token", "aaaaaaaa");
 
-    xhr.onload = () => displayEventList(JSON.parse(xhr.response));
+    xhr.onload = () => eventList(JSON.parse(xhr.response));
     xhr.send();
   }
 
-  function displayEventList(eventList) {
-    var manageEvents = document.getElementById("test3");
+  function eventList(eventList) {
     manageEvents.innerHTML = null;
     const newEventList = eventList.event_id_list;
-    for (var i = 0; i < newEventList.length; i++) {
-      var node = document.createElement("card");
-      node.id = newEventList[i];
-      node.innerHTML = `
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <button type="button" class="btn btn-danger" id="deleteButton" onclick="deleteEvent(this.id)">Delete</button>
-        </div>
+    var apiLink = "https://api.752628.xyz/v2/calendar/event/get?"
+    newEventList.forEach(i => apiLink += ("event_id_list=" + parseInt(i) + "&"));
+    let j = 0;
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", apiLink);
+
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("pa-token", "aaaaaaaa");
+
+    xhr.onload = () => newEventList.forEach(i => displayEventList(i, (JSON.parse(xhr.response)).result[j++]));
+    xhr.send();
+  }
+  
+  function displayEventList(newEvent, eventInfo) {
+    var node = document.createElement("card");
+    node.id = newEvent;
+    manageEvents.appendChild(node);
+
+    node.innerHTML = `
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" id="eventHeader"></h5>
+        <p class="card-text" id="eventText"></p>
+        <button type="button" class="btn btn-danger" id="deleteButton" onclick="deleteEvent(this.id)">Delete</button>
       </div>
-      `;
+    </div>
+    `;
+    //eventInfo.display_name;
+    //eventInfo.description;
 
-      manageEvents.appendChild(node);
-      document.getElementById("deleteButton").id = node.id;
-
-      console.log(newEventList[i]);
-    }
+    console.log(newEvent);
   }
 </script>
 
