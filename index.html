@@ -16,10 +16,6 @@
     Share Event
   </button>
 
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteEvent">
-    Delete Event
-  </button>
-
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#manageEvents" onclick="testing()">
     Manage Events
   </button>
@@ -31,35 +27,12 @@
           <h5 class="modal-title" id="shareEventLabel">Delete Event</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body" id="test3">
+        <div class="modal-body" id="manageEventsBody">
           
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
           <button type="button" class="btn btn-danger">Delete</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="deleteEvent" data-bs-backdrop="static" tabindex="-1" aria-labelledby="shareEventLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="shareEventLabel">Delete Event</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label for="user-name" class="col-form-label">Enter event id to delete:</label>
-              <input type="text" class="form-control" id="eventId">
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger" onclick="deleteEvent()">Delete</button>
         </div>
       </div>
     </div>
@@ -387,7 +360,9 @@
 </script>
 
 <script>
-  var manageEvents = document.getElementById("test3");
+  var manageEvents = document.getElementById("manageEventsBody");
+  var count = 0;
+  
   function testing() {
     let xhr = new XMLHttpRequest();
     xhr.open("GET", "https://api.752628.xyz/v2/calendar/event/index");
@@ -428,12 +403,16 @@
       <div class="card-body">
         <h5 class="card-title" id="eventHeader"></h5>
         <p class="card-text" id="eventText"></p>
+        <button type="button" class="btn btn-primary" id="editButton">Edit</button>
         <button type="button" class="btn btn-danger" id="deleteButton" onclick="deleteEvent(this.id)">Delete</button>
       </div>
     </div>
     `;
-    //eventInfo.display_name;
-    //eventInfo.description;
+    document.getElementById("deleteButton").id = node.id;
+    document.getElementById("eventHeader").id = ++count;
+    document.getElementById(count).textContent = eventInfo.display_name;
+    document.getElementById("eventText").id = ++count;
+    document.getElementById(count).textContent = "(" + new Date(eventInfo.start_time.timestamp_int).toDateString() + " - " + new Date(eventInfo.end_time.timestamp_int).toDateString() + ")\t" + eventInfo.description;
 
     console.log(newEvent);
   }
