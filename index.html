@@ -1,657 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <title>Calendar</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/extra/vanilla-datetimerange-picker-dark.css">
+
 </head>
+
 <body>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createEvent">
-    Create Event
-  </button>
-  
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareEvent">
-    Share Event
-  </button>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
 
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#manageEvents" onclick="testing()">
-    Manage Events
-  </button>
+  <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" type="text/javascript"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/dist/vanilla-datetimerange-picker.js"></script>
+  <div class ="head", id="top">
+    <h1>Calendar</h1>
 
-  <div class="modal fade" id="manageEvents" data-bs-backdrop="static" tabindex="-1" aria-labelledby="shareEventLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="shareEventLabel">Delete Event</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="manageEventsBody">
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Exit</button>
-        </div>
-      </div>
-    </div>
+    Week: <input type="week" id="myweek" value="1970-W01">
+
   </div>
-
-  <div class="modal fade" id="shareEvent" data-bs-backdrop="static" tabindex="-1" aria-labelledby="shareEventLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="shareEventLabel">Share Event</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label for="user-name" class="col-form-label">Share to User:</label>
-              <input type="text" class="form-control" id="user-name" placeholder="ex: 'Username1, Username2, Username3'">
+  <div class="container" id="calendar">
+    <!-- <div class="drop-targets"> -->
+    <!-- <div class="box">
+              <div class="item" id="drag1" draggable="true">
+                <button type="button" class="btn" data-bs-toggle="popover" data-bs-trigger="focus" title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+              
             </div>
-            <div class="row mb-2">
-              <label for="week-day" class="col-auto col-form-label">Events: </label>
-              <div class="col-sm-4">
-                <select class="form-select" aria-label="week-day" multiple>
-                  <option selected>Event 1</option>
-                  <option value="1">Event 2</option>
-                  <option value="2">Event 3</option>
-                  <option value="3">Event 4</option>
-                </select>
               </div>
-              <label for="week-day" class="col-auto col-form-label">(able to select multiple)</label>
+              
+           
+            <div class="box"></div>
+            
+            <div class="box"></div> -->
+
+
+
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createEvent">
+          Create Event
+        </button>
+        <div class="modal fade needs-validation" id="createEvent" data-bs-backdrop="static" tabindex="-1" aria-labelledby="createEventLabel" aria-hidden="true" novalidate>
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="createEventLabel">New Event</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
             </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Share</button>
-        </div>
-      </div>
-    </div>
+          </div> -->
   </div>
+  <script type="module" src="./js/calendar.js"></script>
 
-  <div class="modal fade needs-validation" id="createEvent" data-bs-backdrop="static" tabindex="-1" aria-labelledby="createEventLabel" aria-hidden="true" novalidate>
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="createEventLabel">New Event</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label for="event-name" class="col-form-label">Title:</label>
-              <input type="text" class="form-control" id="event-name" required>
-            </div>
-            <div class="row mb-3">
-              <label for="event-days-start" class="col-sm-3 col-form-label">Start Date:</label>
-              <div class="col-sm-5">
-                <input type="text" class="form-control" id="event-days-start" placeholder="yyyy-mm-dd">
-              </div>
-            </div>
-            <div class="row mb-3">
-              <label for="event-time-start" class="col-sm-3 col-form-label">Start Time:</label>
-              <div class="col-sm-5">
-                <input type="text" class="form-control" id="event-time-start" placeholder="XX:XX">
-              </div>
-              <div class="col-sm-3">
-                <select class="form-select" id="event-time-start-select">
-                  <option selected>AM</option>
-                  <option value="PM">PM</option>
-                </select>
-              </div>
-            </div>
-            <div class="row mb-3">
-              <label for="event-days-end" class="col-sm-3 col-form-label">End Date:</label>
-              <div class="col-sm-5">
-                <input type="text" class="form-control" id="event-days-end" placeholder="yyyy-mm-dd">
-              </div>
-            </div>
-            <div class="row mb-3">
-              <label for="event-time-end" class="col-sm-3 col-form-label">End Time:</label>
-              <div class="col-sm-5">
-                <input type="text" class="form-control" id="event-time-end" placeholder="XX:XX">
-              </div>
-              <div class="col-sm-3">
-                <select class="form-select" id="event-time-end-select">
-                  <option selected>AM</option>
-                  <option value="PM">PM</option>
-                </select>
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="event-desc" class="col-form-label">Description:</label>
-              <textarea class="form-control" id="event-desc"></textarea>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button class="btn btn-primary" data-bs-target="#makeReoccuring" data-bs-toggle="modal" id="reoccuringButton">Make Reoccuring</button>
-          <button type="submit" class="btn btn-success" onclick="submitButton()">Submit</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- <script type="module" src="./js/calendar.js"></script> -->
 
-  <div class="modal fade" id="makeReoccuring" data-bs-backdrop="static" tabindex="-1" aria-hidden="true" aria-labelledby="makeReoccuringLabel">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="makeReoccuringLabel">Reoccuring Event</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body row mb-3 gy-5">
-          <form>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="dailyOption" checked onclick="showOption(dailyMain)">
-              <label class="form-check-label" for="flexRadioDefault1">
-                Daily
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="weeklyOption" onclick="showOption(weeklyMain)">
-              <label class="form-check-label" for="flexRadioDefault1">
-                Weekly
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="monthlyOption" onclick="showOption(monthlyMain)">
-              <label class="form-check-label" for="flexRadioDefault1">
-                Monthly
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="yearlyOption" onclick="showOption(yearlyMain)">
-              <label class="form-check-label" for="flexRadioDefault1">
-                Yearly
-              </label>
-            </div>
-          </form>
-
-            <!-- Daily -->
-            <form id="dailyMain" style="display: block">
-              <div class="row auto" id="daily">
-                <div>
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="dailyOption1" checked>
-                  <label for="dailyOption1" class="form-check-label">Recurs every</label>
-                  <input type="text" class="col-sm-1 form-check-label" value="1" id="dailyOption1Num">
-                  <label for="dailyOption1" class="form-check-label">day(s)</label>
-                </div>
-              </div>
-              <div class="row mb-2">
-                <div>
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="dailyOption2">
-                  <label for="dayOption2" class="form-check-label">Recurs every weekday</label>
-                </div>
-              </div>
-              <div class="row mb-2">
-                <div>
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="dailyOption3">
-                  <label for="dayOption3" class="form-check-label">Recurs every weekend</label>
-                </div>
-              </div>
-            </form>
-
-            <!-- Weekly -->
-            <form id="weeklyMain" style="display: none">
-              <div class="row mb-2">
-                <label for="weeklyNum" class="col-auto col-form-label">Recurs every</label>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" id="weeklyNum" value="1">
-                </div>
-                <div class="col-auto">
-                  <label for="weeklyNum" class="col-auto col-form-label">week(s)</label>
-                </div>
-              </div>
-              <div class="row mb-2">
-                <label for="week-day" class="col-auto col-form-label">On</label>
-                <div class="col-sm-4">
-                  <select class="form-select" aria-label="week-day" id="weeklyDays" multiple>
-                    <option selected>Sunday</option>
-                    <option value="1">Monday</option>
-                    <option value="2">Tuesday</option>
-                    <option value="3">Wednesday</option>
-                    <option value="4">Thursday</option>
-                    <option value="5">Friday</option>
-                    <option value="6">Saturday</option>
-                  </select>
-                </div>
-                <label for="week-day" class="col-auto col-form-label">(able to select multiple)</label>
-              </div>
-            </form>
-
-            <!-- Monthly -->
-            <form id="monthlyMain" style="display: none">
-              <div class="row mb-2">
-                <label for="monthlyNum" class="col-auto col-form-label">Recurs every</label>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" id="monthlyNum" value="1">
-                </div>
-                <div class="col-sm-2">
-                  <label for="monthlyNum" class="col-auto col-form-label">month(s)</label>
-                </div>
-              </div>
-              <div class="row mb-2">
-                <div>
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="monthlyOption1" checked>
-                  <label for="monthlyOption1" class="form-check-label">On day</label>
-                  <input type="text" class="col-sm-1 form-check-label" id="monthlyOption1Num" value="1">
-                </div>
-              </div>
-              <div class="row mb-2">
-                <div>
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="monthlyOption2">
-                  <label for="month-day" class="form-check-label">On every</label>
-                  <select class="form-check-label" aria-label="monthly" id="monthlyOption2Num">
-                    <option selected>1st</option>
-                    <option value="1">2nd</option>
-                    <option value="2">3rd</option>
-                    <option value="3">4th</option>
-                    <option value="4">Last</option>
-                  </select>
-                  <select class="form-check-label" aria-label="month-day" id="monthlyOption2Day">
-                    <option selected>Sunday</option>
-                    <option value="1">Monday</option>
-                    <option value="2">Tuesday</option>
-                    <option value="3">Wednesday</option>
-                    <option value="4">Thursday</option>
-                    <option value="5">Friday</option>
-                    <option value="6">Saturday</option>
-                  </select>
-                </div>
-              </div>
-            </form>
-
-            <!-- Yearly -->
-            <form id="yearlyMain" style="display: none">
-              <div class="row mb-2">
-                <label for="yearNum" class="col-auto col-form-label">Recurs every</label>
-                <div class="col-sm-2">
-                  <input type="text" class="form-control" id="yearlyNum" value="1">
-                </div>
-                <div class="col-sm-2">
-                  <label for="yearNum" class="col-auto col-form-label">year(s)</label>
-                </div>
-              </div>
-              <div class="row mb-2">
-                <div>
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="yearlyOption1" checked>
-                  <label for="yearOption2Month" class="form-check-label">On</label>
-                  <select class="form-check-label" aria-label="yearOption2Month" id="yearlyOption1Month">
-                    <option selected>January</option>
-                    <option value="1">February</option>
-                    <option value="2">March</option>
-                    <option value="3">April</option>
-                    <option value="4">May</option>
-                    <option value="5">June</option>
-                    <option value="6">July</option>
-                    <option value="7">August</option>
-                    <option value="8">September</option>
-                    <option value="9">October</option>
-                    <option value="10">November</option>
-                    <option value="11">December</option>
-                  </select>
-                  <input type="text" class="col-sm-1 form-check-label" id="yearlyOption1Day" value="1">
-                </div>
-              </div>
-              <div class="row mb-2">
-                <div>
-                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="yearlyOption2">
-                  <label for="yearSelect" class="form-check-label">On every</label>
-                  <select class="form-check-label" aria-label="yearSelect" id="yearlyOption2Num">
-                    <option selected>1st</option>
-                    <option value="1">2nd</option>
-                    <option value="2">3rd</option>
-                    <option value="3">4th</option>
-                    <option value="4">Last</option>
-                  </select>
-                  <select class="form-check-label" aria-label="yearDayOfWeek" id="yearlyOption2Day">
-                    <option selected>Sunday</option>
-                    <option value="1">Monday</option>
-                    <option value="2">Tuesday</option>
-                    <option value="3">Wednesday</option>
-                    <option value="4">Thursday</option>
-                    <option value="5">Friday</option>
-                    <option value="6">Saturday</option>
-                  </select>
-                  <label for="yearMonth2" class="form-check-label">of</label>
-                  <select class="form-check-label" aria-label="yearMonth2" id="yearlyOption2Month">
-                    <option selected>January</option>
-                    <option value="1">February</option>
-                    <option value="2">March</option>
-                    <option value="3">April</option>
-                    <option value="4">May</option>
-                    <option value="5">June</option>
-                    <option value="6">July</option>
-                    <option value="7">August</option>
-                    <option value="8">September</option>
-                    <option value="9">October</option>
-                    <option value="10">November</option>
-                    <option value="11">December</option>
-                  </select>
-                </div>
-              </div>
-            </form>
-          </div>
-        
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-target="#createEvent" data-bs-toggle="modal">Cancel</button>
-          <button type="button" class="btn btn-danger" onclick="removeReoccuring()" data-bs-target="#createEvent" data-bs-toggle="modal">Remove</button>
-          <button type="button" class="btn btn-success" onclick="saveReoccuring()" data-bs-target="#createEvent" data-bs-toggle="modal">Submit</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <script src="./js/app.js"></script>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 </body>
 
-
-<script>
-  var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-  var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-     return new bootstrap.Popover(popoverTriggerEl)
-  })
-</script>
-
-<script>
-  var manageEvents = document.getElementById("manageEventsBody");
-  var count = 0;
-  
-  function testing() {
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://api.752628.xyz/v2/calendar/event/index");
-
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.setRequestHeader("pa-token", "aaaaaaaa");
-
-    xhr.onload = () => eventList(JSON.parse(xhr.response));
-    xhr.send();
-  }
-
-  function eventList(eventList) {
-    manageEvents.innerHTML = null;
-    const newEventList = eventList.event_id_list;
-    var apiLink = "https://api.752628.xyz/v2/calendar/event/get?"
-    newEventList.forEach(i => apiLink += ("event_id_list=" + parseInt(i) + "&"));
-    let j = 0;
-
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET", apiLink);
-
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.setRequestHeader("pa-token", "aaaaaaaa");
-
-    xhr.onload = () => newEventList.forEach(i => displayEventList(i, (JSON.parse(xhr.response)).result[j++]));
-    xhr.send();
-  }
-  
-  function displayEventList(newEvent, eventInfo) {
-    var node = document.createElement("card");
-    node.id = newEvent;
-    manageEvents.appendChild(node);
-
-    node.innerHTML = `
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-title" id="eventHeader"></h3>
-        <h6 class="card-title" id="eventDate"></h6>
-        <p class="card-text" id="eventText"></p>
-        <button type="button" class="btn btn-primary" id="editButton" onclick="">Edit</button>
-        <button type="button" class="btn btn-danger" id="deleteButton" onclick="deleteEvent(this.id)">Delete</button>
-      </div>
-    </div>
-    `;
-    document.getElementById("deleteButton").id = node.id;
-    document.getElementById("editButton").id = node.id;
-
-    document.getElementById("eventHeader").id = ++count;
-    document.getElementById(count).textContent = eventInfo.display_name;
-    document.getElementById("eventText").id = ++count;
-    document.getElementById(count).textContent = eventInfo.description;
-    
-    var startDate = new Date(eventInfo.start_time.timestamp_int);
-    var endDate = new Date(eventInfo.end_time.timestamp_int);
-    document.getElementById("eventDate").id = ++count;
-    document.getElementById(count).textContent = (startDate.getMonth()+1) + "/" + startDate.getDate() + "/" + startDate.getFullYear() + ", " + startDate.getHours() + ":" + startDate.getMinutes() + " - " + (endDate.getMonth()+1) + "/" + endDate.getDate() + "/" + endDate.getFullYear() + ", " + startDate.getHours() + ":" + startDate.getMinutes();
-
-    console.log(newEvent);
-  }
-</script>
-
-<script>
-  function deleteEvent(eventNumId) {
-    console.log(eventNumId)
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://api.752628.xyz/v2/calendar/event/delete?event_id=" + parseInt(eventNumId));
-
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.setRequestHeader("pa-token", "aaaaaaaa");
-
-    xhr.onload = () => console.log(xhr.responseText);
-    xhr.send();
-  }
-</script>
-
-<script>
-  function showOption(name) {
-    dailyMain.style.display = "none";
-    weeklyMain.style.display = "none";
-    monthlyMain.style.display = "none";
-    yearlyMain.style.display = "none";
-    name.style.display = "block";
-  }
-</script>
-
-<script>
-  var dailyNum;
-  var dailyWeekdays;
-  var dailyWeekends;
-  var weeklyNum;
-  var weeklyDays;
-  var montlyNum;
-  var montlyMonthDay; 
-  var monthlyNum2;
-  var monthlyWeekDay;
-  var yearlyNum; 
-  var yearlyMonth;
-  var yearlyMonthDay;
-  var yearlyNum2;
-  var yearlyWeekDay;
-  var yearlyMonth2;
-  
-  //dailyOption
-  //weeklyOption
-  //monthlyOption
-  //yearlyOption
-
-
-  //dailyOption1
-  //dailyOption1Num *
-  
-  //dailyOption2 *
-
-  //dailyOption3 *
-
-
-  //weeklyNum *
-  //weeklyDays *
-
-
-  //monthlyNum *
-
-  //monthlyOption1
-  //monthlyOption1Num *
-
-  //monthlyOption2
-  //monthlyOption2Num *
-  //monthlyOption2Day *
-  
-
-  //yearlyNum*
-
-  //yearlyOption1
-  //yearlyOption1Month *
-  //yearlyOption1Day *
-
-  //yearlyOption2
-  //yearlyOption2Num *
-  //yearlyOption2Day *
-  //yearlyOption2Month *
-
-  function saveReoccuring() {
-    if (document.getElementById("dailyOption").checked === true) {
-      if (document.getElementById("dailyOption1").checked === true) {
-        dailyNum = document.getElementById("dailyOption1Num");
-      }
-      else if (document.getElementById("dailyOption2").checked === true) {
-        dailyWeekdays = document.getElementById("dailyOption2")
-      }
-      else {
-        dailyWeekends = document.getElementById("dailyOption3")
-      }
-    }
-
-    else if (document.getElementById("weeklyOption").checked === true) {
-      weeklyNum = document.getElementById("weeklyNum")
-      weeklyDays = document.getElementById("weeklyDays")
-    }
-
-    else if (document.getElementById("monthlyOption").checked === true) {
-      monthlyNum = document.getElementById("monthlyNum")
-      if (document.getElementById("monthlyOption1").checked === true) {
-        monthlyMonthDay = document.getElementById("monthlyOption1Num")
-      }
-      else {
-        monthlyNum2 = document.getElementById("monthlyOption2Num")
-        monthlyWeekDay = document.getElementById("monthlyOption2Day")
-      }
-    }
-
-    else {
-      yearlyNum = document.getElementById("yearlyNum")
-      if (document.getElementById("yearlyOption1").checked === true) {
-        yearlyMonth = document.getElementById("yearlyOption1Month")
-        yearlyMonthDay = document.getElementById("yearlyOption1Day")
-      }
-      else {
-        yearlyNum2 = document.getElementById("yearlyOption2Num")
-        yearlyWeekDay = document.getElementById("yearlyOption2Day")
-        yearlyMonth2 = document.getElementById("yearlyOption2Month")
-      }
-    }
-    var reoccur = document.getElementById("reoccuringButton");
-    reoccur.innerText = "Edit Reoccuring";
-    reoccur.className = "btn btn-success";
-  }
-
-  function removeReoccuring() {
-    dailyNum = null;
-    dailyWeekdays = null;
-    dailyWeekends = null;
-    weeklyNum = null;
-    weeklyDays = null;
-    montlyNum = null;
-    montlyMonthDay = null;
-    monthlyNum2 = null;
-    monthlyWeekDay = null;
-    yearlyNum = null;
-    yearlyMonth = null;
-    yearlyMonthDay = null;
-    yearlyNum2 = null;
-    yearlyWeekDay = null;
-    yearlyMonth2 = null;
-    var reoccur = document.getElementById("reoccuringButton");
-    reoccur.innerText = "Make Reoccuring";
-    reoccur.className = "btn btn-primary";
-  }
-</script>
-
-<script>
-  //https://api-0.752628.xyz/docs for testing
-
-  function submitButton() {
-    const eventName = document.getElementById("event-name").value;
-    const eventDaysStart = document.getElementById("event-days-start").value;
-    const eventTimeStart = document.getElementById("event-time-start").value;
-    const eventTimeStartSelect = document.getElementById("event-time-start-select").value;
-    const eventDaysEnd = document.getElementById("event-days-end").value;
-    const eventTimeEnd = document.getElementById("event-time-end").value;
-    const eventTimeEndSelect = document.getElementById("event-time-end-select").value;
-    const eventDesc = document.getElementById("event-desc").value;
-
-    timestampStart = getTimestamp(eventDaysStart, eventTimeStart, eventTimeStartSelect);
-    timestampEnd = getTimestamp(eventDaysEnd, eventTimeEnd, eventTimeEndSelect);
-  
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://api.752628.xyz/v1/add/user/calendar/event?person_id=1234567890");
-
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.setRequestHeader("pa-token", "aaaaaaaa");
-
-    xhr.onload = () => console.log(xhr.responseText);
-    xhr.send(JSON.stringify({
-      "access_control_list": [
-        {
-          "canonical_name": "string",
-          "person_id": "1234567890",
-          "premission_list": [
-            "read_full",
-            "edit_full",
-            "delete"
-          ]
-        }
-      ],
-      "display_name": eventName,
-      "description": eventDesc,
-      "start_time": {
-        "text": eventDaysStart + " " + eventTimeStart + " " + eventTimeStartSelect,
-        "timestamp": timestampStart,
-        "timezone_name": "string",
-        "timezone_offset": 0
-      },
-      "end_time": {
-        "text": eventDaysEnd + " " + eventTimeEnd + " " + eventTimeEndSelect,
-        "timestamp": timestampEnd,
-        "timezone_name": "string",
-        "timezone_offset": 0
-      },
-      "type_list": [
-        {
-          "type_id": "string",
-          "name": "string"
-        }
-      ],
-      "tag_list": [
-        {
-          "tag_id": "string",
-          "name": "string"
-        }
-      ]
-    }))
-  }
-</script>
-
-<script>
-  function getTimestamp(eventDays, eventTime, eventTimeSelect) {
-    var hours = parseInt(eventTime.substring(0, 2));
-    if (eventTimeSelect == "PM") {
-      hours += 12;
-      hours = hours.toString();
-    }
-    else {
-      hours = "0" + hours.toString();
-    }
-
-    return new Date(eventDays + "T" + hours + ":" + eventTime.substring(2) + ":00").getTime()/1000;
-}
-</script>
 </html>
