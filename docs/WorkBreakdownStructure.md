@@ -10,4 +10,4 @@
 |25 April - 3 May|Reoccuring events button changes|Shows only the reoccuring option that is selected, clears after submitting a new event|medium|7 days|Done|Need this to eventually communicate with the server|
 |5 - 6 May|Delete events button|Deletes the event that corresponds with the id entered|medium|2 days|Done|Should implement into a new button|
 |9 - 31 May|Manage events button|Displays events in a popup, with a delete and edit button as well as the title, description, and time|high|14 days|Done|Edit button still needs to be worked on|
-|2 June|Updating Documents|Updating Work Breakdown Structure as well as Feature Specification|medium|1 day|Done|Need more feature specs work|
+|2 June|Updating Documents|Updating Work Breakdown Structure to reflect current work|medium|1 day|Done|Need more feature specs work|
