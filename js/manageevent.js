@@ -34,7 +34,6 @@ var manageEvents = document.getElementById("manageEventsBody");
   }
   
   function displayEventList(eventInfo) {
-    console.log("eee");
     var node = div("card", id(eventInfo.event_id+"card"))
     var startDate = new Date(eventInfo.start_time.timestamp_int*1000);
     var endDate = new Date(eventInfo.end_time.timestamp_int*1000);
@@ -49,15 +48,13 @@ var manageEvents = document.getElementById("manageEventsBody");
       </div>
     `;
 
-    const edit = btn("btn", extraClass("btn-primary"), type("button"), value("Edit Event"));
-    edit.addEventListener('click', ()=>{});
+    const edit = btn("btn", extraClass("btn-primary"), type("button"), value("Edit Event"), id("editEvent2"));
+    edit.addEventListener('click', ()=>editEvent());
     const delt = btn("btn", extraClass("btn-danger"), type("button"), value("Delete Event"));
     delt.addEventListener('click', ()=>deleteEventById("aaaaaaaa", eventInfo.event_id));
     node.appendChild(edit);
     node.appendChild(delt);
 
     manageEvents.appendChild(node);
-
-    console.log((eventInfo.start_time.timestamp_int-eventInfo.end_time.timestamp_int)/3600);
   }
 
