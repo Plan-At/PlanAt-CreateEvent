@@ -48,8 +48,8 @@ var manageEvents = document.getElementById("manageEventsBody");
       </div>
     `;
 
-    const edit = btn("btn", extraClass("btn-primary"), type("button"), value("Edit Event"), id("editEvent2"));
-    edit.addEventListener('click', ()=>editEvent());
+    const edit = btn("btn", extraClass("btn-primary"), type("button"), value("Edit Event"), id("editEvent2"), ["data-bs-toggle", "modal"], ["data-bs-target", "#manageEvents"]);
+    edit.addEventListener('click', ()=>console.log("testtttt"));
     const delt = btn("btn", extraClass("btn-danger"), type("button"), value("Delete Event"));
     delt.addEventListener('click', ()=>deleteEventById("aaaaaaaa", eventInfo.event_id));
     node.appendChild(edit);
