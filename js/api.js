@@ -41,6 +41,10 @@ export function newEvent(user, token, eventName, eventDesc, start, end, callback
     post("https://api.752628.xyz/v2/calendar/event/create", token, eventJSON(user, eventName, eventDesc, start, end), callback);
 }
 
+export function editEvent(user, token, event, callback){
+  post("https://api.752628.xyz/v2/calendar/event/edit?event_id="+event.id, token, eventJSON(user, event.name, "eventDesc", event.startTime.valueOf()/1000, event.endTime.valueOf()/1000), callback);
+}
+
 export function deleteEvent(token, event, callback){
   post("https://api.752628.xyz/v2/calendar/event/delete?event_id="+event.id, token, "", callback);
 }

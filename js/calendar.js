@@ -3,6 +3,7 @@ import { Time } from './timeutlities.js';
 import { Event } from './event.js';
 import './createevent.js';
 import './manageevent.js';
+import './editevent.js';
 
 import { get, getEvents, getIDs, updateEvent } from './api.js';
 

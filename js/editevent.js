@@ -1,8 +1,7 @@
 import { newEvent } from './api.js';
 import { div, btn, button, id, type, drag, toast, strong, small, body, extraClass, value, create } from './htmlutilities.js';
 
-//const calendar = document.getElementById("top");
-
+const calendar = document.getElementById("calendar");
 
 const edit2 = div("modal", extraClass("fade"), extraClass("needs-validation"), id("editEvent"), ["data-bs-backdrop", "static"], ["tabindex", -1],
   ["aria-labelledby", "editEventLabel"], ["aria-hidden", true]);
@@ -18,13 +17,13 @@ edit2.innerHTML = `
   <div class="modal-body">
     <form>
       <div class="mb-3">
-        <label for="event-name" class="col-form-label">Title:</label>
-        <input type="text" class="form-control" id="event-name" required>
+        <label for="event-name2" class="col-form-label">Title:</label>
+        <input type="text" class="form-control" id="event-name2" required>
       </div>
       <div><input type="text" id="datetimerange-input2" size="40" style="text-align:center"></div>
       <div class="mb-3">
-        <label for="event-desc" class="col-form-label">Description:</label>
-        <textarea class="form-control" id="event-desc"></textarea>
+        <label for="event-desc2" class="col-form-label">Description:</label>
+        <textarea class="form-control" id="event-desc2"></textarea>
       </div>
     </form>
   </div>
@@ -38,7 +37,7 @@ edit2.innerHTML = `
 </script>
 `;
 
-//calender.appendChild(edit2);
+calendar.appendChild(edit2);
 
 var submit2 = document.getElementById("editbutton");
 submit2.addEventListener('click', editButton);
@@ -93,14 +92,14 @@ window.addEventListener("load", function (event) {
   window.addEventListener('apply.daterangepicker', function (ev) {
     console.log(ev.detail.startDate.unix());
     console.log(ev.detail.endDate.unix());
-    timestampStart = ev.detail.startDate.unix();
-    timestampEnd = ev.detail.endDate.unix();
+    timestampStart2 = ev.detail.startDate.unix();
+    timestampEnd2 = ev.detail.endDate.unix();
   });
 });
 
 export function editButton() {
-  //const eventName = document.getElementById("event-name").value;
+  //const eventName2 = document.getElementById("event-name2").value;
 
-  //const eventDesc = document.getElementById("event-desc").value;
-  //newEvent("1234567890", "aaaaaaaa", eventName, eventDesc, timestampStart, timestampEnd, () => { });
+  //const eventDesc2 = document.getElementById("event-desc2").value;
+  //newEvent("1234567890", "aaaaaaaa", eventName2, eventDesc2, timestampStart2, timestampEnd2, () => { });
 }
