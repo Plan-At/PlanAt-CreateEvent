@@ -1,5 +1,6 @@
-import { newEvent } from './api.js';
+import { editEvent } from './api.js';
 import { div, btn, button, id, type, drag, toast, strong, small, body, extraClass, value, create } from './htmlutilities.js';
+import { displayEventList } from './manageevent.js';
 
 const calendar = document.getElementById("calendar");
 
@@ -28,9 +29,9 @@ edit2.innerHTML = `
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" id="editclose" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+    <button type="button" id="editclose" class="btn btn-secondary" data-bs-toggle="modal" href="#manageEvents">Cancel</button>
     <button class="btn btn-primary" data-bs-target="#makeReoccuring" data-bs-toggle="modal">Make Reoccuring</button>
-    <button type="submit" id="editbutton" class="btn btn-primary">Submit</button>
+    <button type="submit" id="editbutton" class="btn btn-primary" data-bs-toggle="modal" href="#manageEvents">Submit</button>
   </div>
 </div>
 </div>
@@ -40,9 +41,9 @@ edit2.innerHTML = `
 calendar.appendChild(edit2);
 
 var submit2 = document.getElementById("editbutton");
-submit2.addEventListener('click', editButton);
+submit2.addEventListener('click', displayEventList);
 
-var timestampStart, timestampEnd;
+var timestampStart2, timestampEnd2;
 window.addEventListener("load", function (event) {
   let drp = new DateRangePicker('datetimerange-input2',
     {
@@ -97,9 +98,15 @@ window.addEventListener("load", function (event) {
   });
 });
 
-export function editButton() {
-  //const eventName2 = document.getElementById("event-name2").value;
+export function editButton(eventId) {
+  console.log(eventId);
+  console.log(eventName2);
+  console.log(eventDesc2);
+  console.log(timestampStart2);
+  console.log(timestampEnd2);
 
-  //const eventDesc2 = document.getElementById("event-desc2").value;
-  //newEvent("1234567890", "aaaaaaaa", eventName2, eventDesc2, timestampStart2, timestampEnd2, () => { });
+  const eventName2 = document.getElementById("event-name2").value;
+  const eventDesc2 = document.getElementById("event-desc2").value;
+
+  editEvent("1234567890", "aaaaaaaa", eventId, eventName2, eventDesc2, timestampStart2, timestampEnd2, () => { });
 }

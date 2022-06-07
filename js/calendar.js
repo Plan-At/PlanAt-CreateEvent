@@ -109,6 +109,8 @@ calendar.appendChild(e2);
 var submit2 = document.getElementById("createEvent");
 submit2.addEventListener('hide.bs.modal', updateEntries);
 
+var submit3 = document.getElementById("editEvent");
+submit3.addEventListener('hide.bs.modal', updateEntries);
 
 var weekSelector = document.getElementById("myweek");
 weekSelector.addEventListener('input', ()=>{
