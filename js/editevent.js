@@ -13,7 +13,7 @@ edit2.innerHTML = `
 <div class="modal-content">
   <div class="modal-header">
     <h5 class="modal-title" id="editEventLabel">New Event</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-toggle="modal" href="#manageEvents"></button>
   </div>
   <div class="modal-body">
     <form>
@@ -99,12 +99,6 @@ window.addEventListener("load", function (event) {
 });
 
 export function editButton(eventId) {
-  console.log(eventId);
-  console.log(eventName2);
-  console.log(eventDesc2);
-  console.log(timestampStart2);
-  console.log(timestampEnd2);
-
   const eventName2 = document.getElementById("event-name2").value;
   const eventDesc2 = document.getElementById("event-desc2").value;
 
