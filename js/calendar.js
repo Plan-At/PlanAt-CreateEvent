@@ -109,9 +109,9 @@ calendar.appendChild(e2);
 var submit2 = document.getElementById("createEvent");
 submit2.addEventListener('hide.bs.modal', updateEntries);
 
+// Refreshes calendar events when the manage events modal is closed
 var submit3 = document.getElementById("manageEventsClose1");
 submit3.addEventListener('click', updateEntries);
-
 var submit4 = document.getElementById("manageEventsClose2");
 submit4.addEventListener('click', updateEntries);
 

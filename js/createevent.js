@@ -1,13 +1,16 @@
 import { newEvent } from './api.js';
 import { div, btn, button, id, type, drag, toast, strong, small, body, extraClass, value, create } from './htmlutilities.js';
 
+// The header of the calendar
 const calendar = document.getElementById("top");
+// The create event button
 const but = btn("btn", extraClass("btn-primary"), type("button"), ["data-bs-toggle", "modal"], ["data-bs-target", "#createEvent"], value("Create Event"));
 
+// The create event modal
 const create2 = div("modal", extraClass("fade"), extraClass("needs-validation"), id("createEvent"), ["data-bs-backdrop", "static"], ["tabindex", -1],
   ["aria-labelledby", "createEventLabel"], ["aria-hidden", true]);
 
-
+// Inner HTML for the create event modal
 create2.innerHTML = `
 <div class="modal-dialog">
 <div class="modal-content">
@@ -38,12 +41,15 @@ create2.innerHTML = `
 </script>
 `;
 
+// Adding the create event button and modal to the calendar
 calendar.appendChild(but);
 calendar.appendChild(create2);
 
+// When the submit button in the create event modal is clicked it runs the submitButton function
 var submit2 = document.getElementById("submitbutton");
 submit2.addEventListener('click', submitButton);
 
+// Creates and shows a date range picker in the create event modal and saves the timestamps when the user submits dates
 var timestampStart, timestampEnd;
 window.addEventListener("load", function (event) {
   let drp = new DateRangePicker('datetimerange-input1',
@@ -99,6 +105,7 @@ window.addEventListener("load", function (event) {
   });
 });
 
+// Gets the event name, event description, timestamp start, and timestamp end from the modal and creates a new event
 export function submitButton() {
   const eventName = document.getElementById("event-name").value;
 

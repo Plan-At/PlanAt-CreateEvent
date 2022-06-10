@@ -2,12 +2,14 @@ import { editEvent } from './api.js';
 import { div, btn, button, id, type, drag, toast, strong, small, body, extraClass, value, create } from './htmlutilities.js';
 import { displayEventList } from './manageevent.js';
 
+// The calendar element
 const calendar = document.getElementById("calendar");
 
+// The edit event modal
 const edit2 = div("modal", extraClass("fade"), extraClass("needs-validation"), id("editEvent"), ["data-bs-backdrop", "static"], ["tabindex", -1],
   ["aria-labelledby", "editEventLabel"], ["aria-hidden", true]);
 
-
+// The inner HTML for the edit event modal
 edit2.innerHTML = `
 <div class="modal-dialog">
 <div class="modal-content">
@@ -38,11 +40,14 @@ edit2.innerHTML = `
 </script>
 `;
 
+// Adding the edit modal to the calendar
 calendar.appendChild(edit2);
 
+// When the submit button for the edit modal is clicked it refreshes the event list in the manage events modal
 var submit2 = document.getElementById("editbutton");
 submit2.addEventListener('click', displayEventList);
 
+// Creates and shows a date range picker in the create event modal and saves the timestamps when the user submits dates
 var timestampStart2, timestampEnd2;
 window.addEventListener("load", function (event) {
   let drp = new DateRangePicker('datetimerange-input2',
@@ -98,6 +103,7 @@ window.addEventListener("load", function (event) {
   });
 });
 
+// Gets the event name, event description, timestamp start, and timestamp end from the modal and creates a new event
 export function editButton(eventId) {
   const eventName2 = document.getElementById("event-name2").value;
   const eventDesc2 = document.getElementById("event-desc2").value;

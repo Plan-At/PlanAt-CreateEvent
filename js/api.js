@@ -40,6 +40,7 @@ export function updateEvent(user, token, event, callback){
 export function newEvent(user, token, eventName, eventDesc, start, end, callback){
     post("https://api.752628.xyz/v2/calendar/event/create", token, eventJSON(user, eventName, eventDesc, start, end), callback);
 }
+// Edits an already existing event with new information
 export function editEvent(user, token, eventId, eventName, eventDesc, start, end, callback){
   post("https://api.752628.xyz/v2/calendar/event/edit?event_id="+eventId, token, eventJSON(user, eventName, eventDesc, start, end), callback);
 }
