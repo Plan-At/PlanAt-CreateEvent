@@ -21,7 +21,7 @@
 |---|---|---|---|
 |Jack Scott|4/19/2022|Initial Draft|Created this page and outlined descriptions|
 |Jack Scott|4/21/2022|Update Draft|Finished the descriptions of the features currently in place|
-|Jack Scott|6/13/2022|Finish Feature Specs|Added the rest of the features not previously present|
+|Jack Scott|6/13/2022|Finish Draft|Added the rest of the features not previously present|
 
 ## Functional Specification
 The Create Event feature for the calendar, allowing for information about an event to be entered and then created. The Manage Events feature for the calendar, displays the events that the user currently has. The Edit Event feature, apart of Manage Events and is attached to each event and allows the user to change specific elements of the event. The Delete Event feature, apart of Manage Events and attached to each event, allows the user to delete the specific event.
