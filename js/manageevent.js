@@ -1,4 +1,4 @@
-import { deleteEvent, deleteEventById, getEvents, getIDs, getUserId, newEvent, sleep } from './api.js';
+import { deleteEvent, deleteEventById, getEvents, getIDs, newEvent } from './api.js';
 import { div, btn, button, id, type, drag, toast, strong, small, body, extraClass, value, create } from './htmlutilities.js';
 import { editButton } from './editevent.js';
 
@@ -39,7 +39,7 @@ var manageEvents = document.getElementById("manageEventsBody");
 // Clears the events shown in the manage events modal and then calls displayEvent on each event in the event list
 export function displayEventList() {
   manageEvents.innerHTML = null;
-  getIDs(ids=>getEvents(ids.event_id_list, evts=>evts.result.forEach(displayEvent)));
+  getIDs("1234567890", "aaaaaaaa", ids=>getEvents(ids.event_id_list, "aaaaaaaa", evts=>evts.result.forEach(i => displayEvent(i))));
 }
 
 // Creates a card for the event and displays the event's info on it
@@ -61,7 +61,7 @@ function displayEvent(eventInfo) {
   edit.addEventListener('click', ()=>document.getElementById("editbutton").onclick = function(){editButton(eventInfo.event_id)});
   // Creates a delete button, on click it uses the server to delete the event and refreshes the manage events modal
   const delt = btn("btn", extraClass("btn-danger"), type("button"), value("Delete Event"), id("delbutton"));
-  delt.addEventListener('click', ()=>deleteEventById(eventInfo.event_id));
+  delt.addEventListener('click', ()=>deleteEventById("aaaaaaaa", eventInfo.event_id));
   delt.addEventListener('click', async ()=>{
     await sleep(500);
     displayEventList();

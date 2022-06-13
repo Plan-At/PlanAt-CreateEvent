@@ -1,125 +1,94 @@
-import {getCookie} from "./cookies.js"; // need put full filepath since this is not a node module
+export function getIDs(user, token, callback) {
+  get("https://api.752628.xyz/v2/calendar/event/index", token, callback);
+}
+export function getEvents(events, token, callback) {
+  var url = "https://api.752628.xyz/v2/calendar/event/get?"
+  events.forEach(i => url += ("event_id_list=" + parseInt(i) + "&"));
+  get(url, token, callback);
+}
 
-//get all event ids, then run the callback
-export function getIDs(callback) {
-    get("https://api.752628.xyz/v2/calendar/event/index", callback);
-}
-//get the events from an array of IDs, then run the callback
-export function getEvents(events, callback) {
-    var url = "https://api.752628.xyz/v2/calendar/event/get?"
-    events.forEach(i => url += ("event_id_list=" + parseInt(i) + "&"));
-    console.log(url);
-    get(url, callback);
-}
-// internal function to handle xhr requests
-function xhrWrapper(method, url, message, callback){
+export function get(url, token, callback) {
   let xhr = new XMLHttpRequest();
-  xhr.open(method, url);
+  xhr.open("GET", url);
+
   xhr.setRequestHeader("Accept", "application/json");
   xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.setRequestHeader("pa-token", getToken());
+  xhr.setRequestHeader("pa-token", token);
+
   if(callback != null) xhr.onload = () => callback(JSON.parse(xhr.responseText));
-  console.log(message);
+
+  xhr.send();
+}
+
+export function post(url, token, message, callback) {
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", url);
+
+  // console.log(message);
+
+  xhr.setRequestHeader("Accept", "application/json");
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.setRequestHeader("pa-token", token);
+
+  if(callback != null) xhr.onload = () => callback(JSON.parse(xhr.responseText));
+
   xhr.send(message);
-
 }
-
-//get requests
-export function get(url, callback) {
-  xhrWrapper("GET", url, null, callback);
+export function updateEvent(user, token, event, callback){
+post("https://api.752628.xyz/v2/calendar/event/edit?event_id="+event.id, token, eventJSON(user, event.name, "eventDesc", event.startTime.valueOf()/1000, event.endTime.valueOf()/1000), callback);
 }
-//post requests
-export function post(url, message, callback) {
-  xhrWrapper("POST", url,  message, callback);
-}
-
-//update existing event from the event object
-export function updateEvent(user, event, callback){
-  post("https://api.752628.xyz/v2/calendar/event/edit?event_id="+event.id, eventJSON(user, event.name, event.description, event.startTime.valueOf()/1000, event.endTime.valueOf()/1000), callback);
+export function newEvent(user, token, eventName, eventDesc, start, end, callback){
+  post("https://api.752628.xyz/v2/calendar/event/create", token, eventJSON(user, eventName, eventDesc, start, end), callback);
 }
 // Edits an already existing event with new information
-export function editEvent(user, eventId, eventName, eventDesc, start, end, callback){
-  post("https://api.752628.xyz/v2/calendar/event/edit?event_id="+eventId, eventJSON(user, eventName, eventDesc, start, end), callback);
+export function editEvent(user, token, eventId, eventName, eventDesc, start, end, callback){
+post("https://api.752628.xyz/v2/calendar/event/edit?event_id="+eventId, token, eventJSON(user, eventName, eventDesc, start, end), callback);
 }
-//create a new event
-export function newEvent(user, eventName, eventDesc, start, end, callback){
-    post("https://api.752628.xyz/v2/calendar/event/create", eventJSON(user, eventName, eventDesc, start, end), callback);
+export function deleteEvent(token, event, callback){
+post("https://api.752628.xyz/v2/calendar/event/delete?event_id="+event.id, token, "", callback);
 }
-//delete an event
-export function deleteEvent(event, callback){
-  post("https://api.752628.xyz/v2/calendar/event/delete?event_id="+event.id, "", callback);
+export function deleteEventById(token, id, callback){
+post("https://api.752628.xyz/v2/calendar/event/delete?event_id="+id, token, callback);
 }
 
-//delete an event by an ID
-export function deleteEventById(id, callback){
-  post("https://api.752628.xyz/v2/calendar/event/delete?event_id="+id, callback);
-}
-
-//generate json for an event
 export function eventJSON(user, eventName, eventDesc, start, end){
-  return JSON.stringify({
-    "access_control_list": [
-      {
-        "canonical_name": "public",
-        "person_id": user+"",
-        "permission_list": [
-          "read_full",
-          "edit_full",
-          "delete"
-        ]
-      }
-    ],
-    "display_name": eventName,
-    "description": eventDesc,
-    "start_time": {
-      "text": "string",
-      "timestamp_int": start,
-      "timezone_name": "string",
-      "timezone_offset": 0
-    },
-    "end_time": {
-      "text": "string",
-      "timestamp_int": end,
-      "timezone_name": "string",
-      "timezone_offset": 0
-    },
-    "type_list": [
-      {
-        "type_id": "string",
-        "display_name": "string"
-      }
-    ],
-    "tag_list": [
-      {
-        "tag_id": "string",
-        "display_name": "string"
-      }
-    ]
-  });
-}
-//user id stuff
-var userId;
-//get the user id from a token
-export async function getUserId(){
-  if(userId == null){
-    get("https://api.752628.xyz/v2/user/id/get", json => userId = json.person_id);
-    await sleep(500);
-  }
-  console.log(userId);
-  return userId;
-    // return "1234567890";  
-}
-//token stuff
-export function getToken(){
-  // If return something null might cause 422 error when sending the request
-  const potentialToken = getCookie("pa-token");
-  if (potentialToken != null) {
-    return potentialToken;
-  }
-  return "";
-}
-
-//sleep for ms
-export function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+return JSON.stringify({
+  "access_control_list": [
+    {
+      "canonical_name": "string",
+      "person_id": user,
+      "permission_list": [
+        "read_full",
+        "edit_full",
+        "delete"
+      ]
+    }
+  ],
+  "display_name": eventName,
+  "description": eventDesc,
+  "start_time": {
+    "text": "string",
+    "timestamp_int": start,
+    "timezone_name": "string",
+    "timezone_offset": 0
+  },
+  "end_time": {
+    "text": "string",
+    "timestamp_int": end,
+    "timezone_name": "string",
+    "timezone_offset": 0
+  },
+  "type_list": [
+    {
+      "type_id": "string",
+      "display_name": "string"
+    }
+  ],
+  "tag_list": [
+    {
+      "tag_id": "string",
+      "display_name": "string"
+    }
+  ]
+});
 }
