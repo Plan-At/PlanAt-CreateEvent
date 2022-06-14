@@ -37,12 +37,12 @@ Sections of the project:
 1. Create Event page: This page allows the user to enter the title, starting date/time, ending date/time, and description of the event.
 2. Submit Event button: Gathers the information the user entered and sends it to the server.
 
-
+<img width="403" alt="image" src="https://user-images.githubusercontent.com/90592684/173614758-02717382-60bb-4e9f-959a-8067b36b50a0.png">
 3. Manage Event page: Displays each event the user currently has, displays the title, time, and description of each event and contains an edit and delete button attached to it.
 4. Edit Event button: When clicked on it displays the Edit Event page, is attached to each individual event.
 5. Delete Event button: Deletes the specific event the button is attached to, then refreshes the Manage Events list.
 
-
+<img width="403" alt="image" src="https://user-images.githubusercontent.com/90592684/173614758-02717382-60bb-4e9f-959a-8067b36b50a0.png">
 6. Edit Event page: Displays a page similar to the Create Event page where the user is able to update the title, time, and description of the event.
 7. Submit Edit button: Gathers the information the user entered and communicates with the server to update the specific event the user clicked on.
 
