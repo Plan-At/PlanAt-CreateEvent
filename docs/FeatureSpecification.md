@@ -32,7 +32,7 @@ The user wants to create a new event that will be displayed on the calendar, the
 
 ## Feature Description
 Sections of the project:
-
+<img width="403" alt="image" src="https://user-images.githubusercontent.com/90592684/173614758-02717382-60bb-4e9f-959a-8067b36b50a0.png">
 1. Create Event page: This page allows the user to enter the title, starting date/time, ending date/time, and description of the event.
 2. Submit Event button: Gathers the information the user entered and sends it to the server.
 3. Manage Event page: Displays each event the user currently has, displays the title, time, and description of each event and contains an edit and delete button attached to it.
