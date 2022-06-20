@@ -59,6 +59,8 @@ function displayEvent(eventInfo) {
   // Creates an edit button, on click it displays the edit event modal and adds a function that passes the event id to the submit edit button
   const edit = btn("btn", extraClass("btn-primary"), type("button"), value("Edit Event"), id("editEvent2"), ["data-bs-toggle", "modal"], ["data-bs-target", "#editEvent"]);
   edit.addEventListener('click', ()=>document.getElementById("editbutton").onclick = function(){editButton(eventInfo.event_id)});
+  edit.addEventListener('click', ()=>document.getElementById("event-name2").innerText);
+  console.log(document.getElementById("event-name2").innerText);
   // Creates a delete button, on click it uses the server to delete the event and refreshes the manage events modal
   const delt = btn("btn", extraClass("btn-danger"), type("button"), value("Delete Event"), id("delbutton"));
   delt.addEventListener('click', ()=>deleteEventById("aaaaaaaa", eventInfo.event_id));
