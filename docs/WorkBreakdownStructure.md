@@ -11,3 +11,6 @@
 |5 - 6 May|Delete events button|Deletes the event that corresponds with the id entered|medium|2 days|Done|Should implement into a new button|
 |9 - 31 May|Manage events button|Displays events in a popup, with a delete and edit button as well as the title, description, and time|high|14 days|Done|Edit button still needs to be worked on|
 |2 June|Updating Documents|Updating Work Breakdown Structure to reflect current work|medium|1 day|Done|Need more feature specs work|
+|3 and 6 - 7 June|Working on the edit events button and modal|A user can now edit a specific event and choose a new title, time, and description|high|3 days|Done|Might work on making it show the previous title, time, and description|
+|9 - 10 June|Commenting code|Writing descriptions for pieces of code for the code review|high|2 days|Done|Didn't add comments to Alex's classes|
+|13 June|Final presentation|Presenting our project to the class|high|1 day|Done|We are finished! Might do some more work to fix bugs|
